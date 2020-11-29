@@ -1,0 +1,52 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        entity_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        login:
+            pattern: ^/auth/login
+            stateless: true
+            anonymous: true
+            form_login:
+                check_path: login_check
+                username_parameter: email
+                password_parameter: password
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+                provider: entity_provider
+        register:
+            pattern: ^/auth/sign-up
+            stateless: true
+            anonymous: true
+        main:
+            pattern: ^/core
+            stateless: true
+            anonymous: true
+            provider: entity_provider
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
+            # activate different ways to authenticate
+
+            # http_basic: true
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: true
+            # https://symfony.com/doc/current/security/form_login_setup.html
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/auth, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/core, roles: IS_AUTHENTICATED_FULLY }
