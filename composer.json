@@ -9,7 +9,8 @@
         "doctrine/annotations": "^1.11",
         "doctrine/doctrine-bundle": "^2.2",
         "doctrine/doctrine-migrations-bundle": "^3.0",
-        "doctrine/orm": "^2.7",
+        "doctrine/orm": "^2.8",
+        "gesdinet/jwt-refresh-token-bundle": "^0.9.1",
         "lexik/jwt-authentication-bundle": "^2.10",
         "sensio/framework-extra-bundle": "^5.6",
         "symfony-bundles/json-request-bundle": "^3.1",
@@ -19,6 +20,8 @@
         "symfony/framework-bundle": "5.1.*",
         "symfony/maker-bundle": "^1.24",
         "symfony/security-bundle": "5.1.*",
+        "symfony/serializer": "5.1.*",
+        "symfony/validator": "5.1.*",
         "symfony/yaml": "5.1.*"
     },
     "config": {

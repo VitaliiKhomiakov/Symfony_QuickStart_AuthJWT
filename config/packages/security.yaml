@@ -1,12 +1,12 @@
 security:
     encoders:
-        App\Entity\User:
+        App\Entity\UserEntity:
             algorithm: bcrypt
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         entity_provider:
             entity:
-                class: App\Entity\User
+                class: App\Entity\UserEntity
                 property: email
     firewalls:
         dev:
@@ -24,6 +24,10 @@ security:
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
                 provider: entity_provider
+        refresh:
+            pattern: ^/auth/refresh
+            stateless: true
+            anonymous: true
         register:
             pattern: ^/auth/sign-up
             stateless: true

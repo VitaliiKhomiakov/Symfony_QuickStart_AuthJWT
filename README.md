@@ -1,7 +1,14 @@
 # Symfony 5 - Quick Start AUTH JWT (Login and Registration)
 Used materials from open sources
 
-Based on: LexikJWTAuthenticationBundle
+- Create Access and Refresh tokens
+- Validator example
+- Repository example
+- 
+
+Based on: 
+ - LexikJWTAuthenticationBundle
+ - JWTRefreshTokenBundle
 
 ## Commands:
 Generate ssl keys:
@@ -11,9 +18,7 @@ Generate ssl keys:
  
 Don't forget about secret key
 
-Generate Entities From DataBases
-php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity
-
 Generate DataBases From Entities
 ./bin/console make:migration
 ./bin/console doctrine:migrations:migrate
+

@@ -27,5 +27,15 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
+    acme_api.event.jwt_created_listener:
+        class: App\EventListener\JWTCreatedListener
+        arguments: [ '@request_stack' ]
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+
+    gesdinet.jwtrefreshtoken.refresh_token_manager:
+        class:  App\Security\RefreshTokenManager
+        public: true
+        arguments: [ '@gesdinet.jwtrefreshtoken.object_manager', '%gesdinet.jwtrefreshtoken.refresh_token.class%' ]
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

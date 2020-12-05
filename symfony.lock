@@ -78,6 +78,9 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
+    "gesdinet/jwt-refresh-token-bundle": {
+        "version": "v0.9.1"
+    },
     "laminas/laminas-code": {
         "version": "3.5.0"
     },
@@ -301,6 +304,9 @@
     "symfony/security-http": {
         "version": "v5.1.9"
     },
+    "symfony/serializer": {
+        "version": "v5.1.9"
+    },
     "symfony/service-contracts": {
         "version": "v2.2.0"
     },
@@ -309,6 +315,22 @@
     },
     "symfony/string": {
         "version": "v5.1.9"
+    },
+    "symfony/translation-contracts": {
+        "version": "v2.3.0"
+    },
+    "symfony/validator": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "d902da3e4952f18d3bf05aab29512eb61cabd869"
+        },
+        "files": [
+            "config/packages/test/validator.yaml",
+            "config/packages/validator.yaml"
+        ]
     },
     "symfony/var-dumper": {
         "version": "v5.1.9"
