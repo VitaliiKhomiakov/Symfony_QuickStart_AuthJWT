@@ -4,7 +4,7 @@ Used materials from open sources
 - Create Access and Refresh tokens
 - Validator example
 - Repository example
-- 
+- Added error output for json response
 
 Based on: 
  - LexikJWTAuthenticationBundle
@@ -17,8 +17,13 @@ Generate ssl keys:
  - $ openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
  
 Don't forget about secret key
+Put pass phrase in config/packages/lexik_jwt_authentication.yaml
 
-Generate DataBases From Entities
-./bin/console make:migration
-./bin/console doctrine:migrations:migrate
+Database configuration in .env file in base directory
 
+Generate DataBases And Tables
+- php bin/console doctrine:database:create
+- php bin/console doctrine:migrations:migrate
+
+Start 
+- symfony server:start

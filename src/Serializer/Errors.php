@@ -13,6 +13,7 @@ class Errors implements NormalizerInterface
       'exception'=> [
         'message' => $exception->getMessage(),
         'code' => $exception->getStatusCode(),
+        'trace' => $exception->getTrace()
       ],
     ];
   }

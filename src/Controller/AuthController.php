@@ -40,12 +40,24 @@ class AuthController extends AbstractController
       return $this->json(['error' => $error->getMessage()], Response::HTTP_UNAUTHORIZED);
     }
 
+    $em = $this->getDoctrine()->getManager();
+    $userRepo = $em->getRepository(UserEntity::class);
+
+    if ($userRepo->findBy(['email' => $email])) {
+      return $this->json(['error' => 'This user already exist'], Response::HTTP_UNAUTHORIZED);
+    }
+
     $user = new UserEntity();
     $user->setPassword($encoder->encodePassword($user, $password));
     $user->setEmail($email);
-    $em = $this->getDoctrine()->getManager();
+
     $em->persist($user);
     $em->flush();
-    return $this->json($user);
+
+    return $this->json([
+      'id' => $user->getId(),
+      'email' => $user->getEmail(),
+      'roles' => $user->getRoles()
+    ], Response::HTTP_CREATED);
   }
 }

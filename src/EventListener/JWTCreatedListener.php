@@ -33,7 +33,7 @@ class JWTCreatedListener {
   public function onJWTCreated(JWTCreatedEvent $event)
   {
     $userRepo = $this->em->getRepository(UserEntity::class);
-    $user = $userRepo->findBy(['email' => $event->getUser()->getUsername()]);
+    $user = $userRepo->findOneBy(['email' => $event->getUser()->getUsername()]);
     $event->setData([
       'id' => $user->getId(),
       // the username field is used to check JWT

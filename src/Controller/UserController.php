@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class UserController extends AbstractController
 {
   /**
-   * @Route("/user", name="user")
+   * @Route("/user", name="user", methods="GET")
    */
   public function index(): Response
   {
