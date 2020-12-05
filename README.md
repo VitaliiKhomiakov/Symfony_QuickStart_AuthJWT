@@ -27,3 +27,28 @@ Generate DataBases And Tables
 
 Start 
 - symfony server:start
+
+
+## Using
+
+#### SignUp
+POST http://127.0.0.1:8000/auth/login
+{"email": "email", "password": "password", "confirmPassword": "confirmPassword"}
+
+#### Login - get access and refresh token
+POST http://127.0.0.1:8000/auth/sign-up
+{"email": "email", "password": "password"}
+
+#### Refresh Token
+POST http://127.0.0.1:8000/auth/refresh
+{"refresh_token": "refresh_token"}
+
+#### Get User
+GET http://127.0.0.1:8000/core/user
+Set Header - Authorization: 'access token'
+
+#### Admin Role Test
+PATCH http://127.0.0.1:8000/core/user
+Set Header - Authorization: 'access token'
+
+Update your user - UPDATE `user` SET `roles` = '[\"ROLE_ADMIN\"]' WHERE `user`.`id` = <ID>;
