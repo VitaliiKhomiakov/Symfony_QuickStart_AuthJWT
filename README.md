@@ -47,6 +47,9 @@ POST http://127.0.0.1:8000/auth/refresh
 GET http://127.0.0.1:8000/core/user
 Set Header - Authorization: 'access token'
 
+Example
+Authorization: Bearer <access-token>
+
 #### Admin Role Test
 PATCH http://127.0.0.1:8000/core/user
 Set Header - Authorization: 'access token'

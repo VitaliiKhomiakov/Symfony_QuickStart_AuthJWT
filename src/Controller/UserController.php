@@ -12,26 +12,26 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
  */
 class UserController extends AbstractController
 {
-  /**
-   * @Route("/user", name="user", methods="GET")
-   */
-  public function index(): Response
-  {
-    return $this->json([
-      'message' => 'Welcome to your new controller!',
-      'path' => 'src/Controller/UserController.php',
-    ]);
-  }
+    /**
+     * @Route("/user", name="user", methods="GET")
+     */
+    public function index(): Response
+    {
+        return $this->json([
+          'id' => $this->getUser()->getId(),
+          'email' => $this->getUser()->getEmail(),
+        ]);
+    }
 
-  /**
-   * @Route("/user", name="update", methods="PATCH")
-   * @IsGranted("ROLE_ADMIN")
-   */
-  public function update(): Response
-  {
-    return $this->json([
-      'message' => 'Update',
-      'path' => 'src/Controller/UserController.php',
-    ]);
-  }
+    /**
+     * @Route("/user", name="update", methods="PATCH")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function update(): Response
+    {
+        return $this->json([
+          'message' => 'Update',
+          'path' => 'src/Controller/UserController.php',
+        ]);
+    }
 }
