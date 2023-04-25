@@ -23,6 +23,7 @@ Database configuration in .env file in base directory
 
 Generate DataBases And Tables
 - php bin/console doctrine:database:create
+- php bin/console doctrine:schema:update --force --complete
 - php bin/console doctrine:migrations:migrate
 
 Start 
